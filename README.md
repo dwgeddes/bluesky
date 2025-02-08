@@ -1,6 +1,6 @@
-# Bluesky Social Module
+# Bluesky Social
 
-This package provides a Python module for interacting with the BlueSky social networking platform, offering both a command-line interface and core functionality for posting, notifications, and image handling.
+A CLI and API tool for interacting with BlueSky.
 
 ## Installation
 

@@ -28,3 +28,5 @@ htmlcov/
 
 # Environment variables
 .env
+
+# Remove this file if you don't need Git-specific configurations in the package.
