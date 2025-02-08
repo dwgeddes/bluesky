@@ -1,5 +1,5 @@
 import pytest
-from notifications import get_notifications, get_responses, list_posts_and_responses, list_unanswered_responses
+from bluesky_social.notifications import get_notifications, get_responses, list_posts_and_responses, list_unanswered_responses
 
 class DummyNotification:
     def __init__(self, author, reason, cid, uri, text):
@@ -69,5 +69,4 @@ def test_list_posts_and_responses(capsys):
 def test_list_unanswered_responses():
     client = DummyClient()
     responses = list_unanswered_responses(client)
-    # Just verify that a list is returned; detailed behavior made dependent on client logic.
     assert isinstance(responses, list)

@@ -11,8 +11,8 @@ import logging
 # ...existing configuration, logging, etc...
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
-from bluesky_core import (get_credentials, clear_credentials, authenticate_bluesky, post,
-                          get_notifications, list_unanswered_responses)
+from bluesky_social.bluesky_core import (get_credentials, clear_credentials, authenticate_bluesky, post,
+                                         get_notifications, list_unanswered_responses)
 
 service_name = "Bluesky"
 username = "jetsetjaxon.bsky.social"
@@ -20,7 +20,7 @@ username = "jetsetjaxon.bsky.social"
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Post text or images to BlueSky.",
-        usage="python bluesky_post.py --text 'Your text here' [--image /path/to/image] [--alt 'Alternative text']"
+        usage="python -m bluesky_social.cli --text 'Your text here' [--image /path/to/image] [--alt 'Alternative text']"
     )
     parser.add_argument("--text", type=str, help="The text to post.", required=False)
     parser.add_argument("--image", type=str, help="Path to an image file.", required=False)
@@ -55,3 +55,5 @@ def main() -> None:
         post(client, args.text, args.image, args.alt)
     else:
         post(client, args.text)
+
+# No __main__ block: this module is now importable.
