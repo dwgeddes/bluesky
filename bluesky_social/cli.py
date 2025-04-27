@@ -43,14 +43,21 @@ def main() -> None:
         sys.exit(1)
 
     if args.get_notifications:
-        get_notifications(client)
+        notifications = get_notifications(client)
+        if notifications:
+            print("Notifications:")
+            for n in notifications:
+                print(n)
+        else:
+            print("No notifications found or an error occurred.")
     elif args.get_responses:
         responses = list_unanswered_responses(client)
         if responses:
+            print("Unanswered responses:")
             for resp in responses:
-                print(f"Unanswered response from {resp['author']}: {resp['text']}")
+                print(resp)
         else:
-            print("No unanswered responses found.")
+            print("No unanswered responses found or an error occurred.")
     elif args.image:
         post(client, args.text, args.image, args.alt)
     else:
