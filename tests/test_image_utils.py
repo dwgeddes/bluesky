@@ -10,4 +10,4 @@ def test_convert_to_jpeg(tmp_path):
     image.save(file_path)
     jpeg_path = convert_to_jpeg(str(file_path))
     assert os.path.exists(jpeg_path)
-    os.remove(jpeg_path)
+    os.remove(jpeg_path)  # Ensure cleanup

@@ -1,7 +1,22 @@
+"""
+Notifications module for the BlueSky social network.
+
+This module provides utilities for fetching and managing BlueSky notifications 
+and post responses.
+"""
 import logging
 from typing import List, Dict, Any
 
 def get_notifications(client) -> List[Dict[str, Any]]:
+    """
+    Fetch notifications from the BlueSky network.
+    
+    Args:
+        client: An authenticated BlueSky client
+        
+    Returns:
+        A list of notification information dictionaries
+    """
     try:
         notifications = client.app.bsky.notification.list_notifications().notifications
         result = []
@@ -22,6 +37,16 @@ def get_notifications(client) -> List[Dict[str, Any]]:
         return []
 
 def get_responses(client, post_id: str) -> List[Dict[str, Any]]:
+    """
+    Fetch responses to a specific post.
+    
+    Args:
+        client: An authenticated BlueSky client
+        post_id: URI of the post to get responses for
+        
+    Returns:
+        A list of response information dictionaries
+    """
     try:
         thread = client.app.bsky.feed.get_post_thread({'uri': post_id})
         responses = []
@@ -40,6 +65,12 @@ def get_responses(client, post_id: str) -> List[Dict[str, Any]]:
         return []
 
 def list_posts_and_responses(client) -> None:
+    """
+    List all posts and their responses for the authenticated user.
+    
+    Args:
+        client: An authenticated BlueSky client
+    """
     try:
         feed = client.app.bsky.feed.get_author_feed({'actor': client.me.handle}).feed
         for post in feed:
@@ -58,6 +89,15 @@ def list_posts_and_responses(client) -> None:
         print(f"Listing error: {e!r}")
 
 def list_unanswered_responses(client) -> List[Dict[str, Any]]:
+    """
+    List all unanswered responses to the user's posts.
+    
+    Args:
+        client: An authenticated BlueSky client
+        
+    Returns:
+        A list of unanswered response information dictionaries
+    """
     unanswered = []
     try:
         notifications = client.app.bsky.notification.list_notifications().notifications

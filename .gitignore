@@ -28,8 +28,3 @@ htmlcov/
 
 # Environment variables
 .env
-
-# Remove this file if you don't need Git-specific configurations in the package.
-__pycache__/test_bluesky_core.cpython-313-pytest-8.3.4.pyc
-tests/__pycache__/test_auth.cpython-313-pytest-8.3.4.pyc
-tests/__pycache__/test_image_utils.cpython-313-pytest-8.3.4.pyc
