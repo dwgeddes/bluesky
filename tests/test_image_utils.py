@@ -1,8 +1,9 @@
 import os
+
 from PIL import Image
-import tempfile
-import pytest
+
 from bluesky_social.image_utils import convert_to_jpeg
+
 
 def test_convert_to_jpeg(tmp_path):
     file_path = tmp_path / "test.png"

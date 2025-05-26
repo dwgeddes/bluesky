@@ -111,14 +111,17 @@ pytest
 pytest --cov=bluesky_social
 ```
 
-### Code formatting
+### Code formatting and linting
 
 ```bash
-# Format code
+# Format code with black
 black bluesky_social tests
 
-# Check for linting issues
-flake8 bluesky_social tests
+# Lint code with ruff
+ruff check bluesky_social tests
+
+# Type checking with mypy
+mypy bluesky_social
 ```
 
 ## Dependencies
